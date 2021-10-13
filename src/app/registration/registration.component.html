@@ -1,0 +1,111 @@
+
+
+<div class="row">
+  <div class="container-register">
+    <mat-card class="example-card">
+      <mat-card-title class="card-title">Регистрация</mat-card-title>
+      <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+
+      <mat-card-content>
+        <form class="register-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Введите номер телефона</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="+7 (999)-999-99-99"
+                   prefix="+7"
+                   required
+                   formControlName="tel"
+                   mask="(000) 000 00 00"
+                   [ngClass]="{invalid: form.get('tel')?.invalid && form.get('tel')?.touched}"
+            >
+
+            <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="form.get('tel')?.invalid && form.get('tel')?.touched">
+              <span *ngIf="form.get('tel').errors['required']">
+                Это поле <strong>обязательно</strong>
+              </span>
+              <span *ngIf="form.get('tel').errors['minlength']">
+                Указаный номер не корректный
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Введите пароль</mat-label>
+            <input matInput
+                   type="password"
+                   placeholder="Введите пароль"
+                   required
+                   formControlName="password"
+                   [ngClass]="{invalid: form.get('password')?.invalid && form.get('password')?.touched}"
+            >
+
+            <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+              <span *ngIf="form.get('password').errors['required']">
+                Это поле <strong>обязательно</strong>
+              </span>
+              <span *ngIf="form.get('password').errors['minlength']">
+                пароль слишком простой
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Повторите пароль</mat-label>
+            <input matInput
+                   type="password"
+                   placeholder="Повторите пароль"
+                   required
+                   formControlName="rp"
+                   [ngClass]="{invalid: form.get('rp')?.invalid && form.get('rp')?.touched}"
+            >
+
+            <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="form.get('rp')?.invalid && form.get('rp')?.touched">
+              <span *ngIf="form.get('rp').errors['required']">
+                Это поле <strong>обязательно</strong>
+              </span>
+              <span *ngIf="form.get('rp').errors['minlength']">
+                пароль слишком простой
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Код из смс</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="Код из смс"
+                   required
+                   formControlName="sms"
+                   [ngClass]="{invalid: form.get('sms')?.invalid && form.get('sms')?.touched}"
+            >
+
+            <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="form.get('sms')?.invalid && form.get('sms')?.touched">
+              <span *ngIf="form.get('sms').errors['required']">
+                Это поле <strong>обязательно</strong>
+              </span>
+              <span *ngIf="form.get('sms').errors['minlength']">
+                минимум 4 символа
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-checkbox class="checkbox-box"  formControlName="conditions">Принимаю условия</mat-checkbox>
+          <br><br>
+          <!--<mat-error *ngIf="formError">{{ formError }}</mat-error>-->
+          <button mat-button [disabled]="form.invalid"
+                  class="form-button roboto">Зарегистрироваться</button>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
